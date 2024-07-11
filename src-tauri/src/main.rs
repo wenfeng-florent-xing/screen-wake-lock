@@ -6,6 +6,7 @@ use tauri::AppHandle;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn exit_command(app_handle: AppHandle) {
+    println!("The command received");
     app_handle.exit(0)
 }
 

@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api";
 import { useEffect, useRef, useState } from "react";
-import { showMenu } from "tauri-plugin-context-menu";
+import { onEventShowMenu } from "tauri-plugin-context-menu";
 import "./App.css";
 function App() {
   const [active, setActive] = useState(false);
@@ -31,19 +31,20 @@ function App() {
   }, [active])
 
   useEffect(() => {
-    showMenu({
-      // pos: { ...},
-      items: [
-        {
-          label: "Exit",
-          disabled: false,
-          shortcut: "ctrl+M",
-          event: () => {
-            invoke("exit_command")
+    onEventShowMenu('contextmenu', {
+        // pos: { ...},
+        items: [
+          {
+            label: "Exit",
+            disabled: false,
+            shortcut: "ctrl+M",
+            event: async () => {
+              console.log("clicked")
+              await invoke("exit_command")
+            }
           }
-        }
-      ]
-    });
+        ]
+      })
   }, [])
 
   return (
