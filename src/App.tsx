@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [active, setActive] = useState(false);
-  const [status, setStatus] = useState<string | undefined>();
+  const [_, setStatus] = useState<string | undefined>();
   const lock = useRef<WakeLockSentinel | undefined>();
 
   useEffect(() => {
