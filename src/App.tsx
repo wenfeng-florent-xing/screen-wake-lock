@@ -1,6 +1,7 @@
+import { invoke } from "@tauri-apps/api";
 import { useEffect, useRef, useState } from "react";
+import { showMenu } from "tauri-plugin-context-menu";
 import "./App.css";
-
 function App() {
   const [active, setActive] = useState(false);
   const [_, setStatus] = useState<string | undefined>();
@@ -28,6 +29,22 @@ function App() {
     }
 
   }, [active])
+
+  useEffect(() => {
+    showMenu({
+      // pos: { ...},
+      items: [
+        {
+          label: "Exit",
+          disabled: false,
+          shortcut: "ctrl+M",
+          event: () => {
+            invoke("exit_command")
+          }
+        }
+      ]
+    });
+  }, [])
 
   return (
     <div data-tauri-drag-region className={`container ${active ? 'lock' : 'unlock'}`}>
