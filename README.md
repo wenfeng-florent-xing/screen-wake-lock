@@ -1,7 +1,9 @@
-# Tauri + React + Typescript
+# A simple tool for preventing the screen lock
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+![](images/屏幕截图%202024-07-11%20194911.png)
+![](images/屏幕截图%202024-07-11%20194923.png)
+![](images/屏幕截图%202024-07-11%20194934.png)
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+# Build the app
+- `pnpm tauri build`
+- then find the executable file in the folder `src-tauri\target\release`
