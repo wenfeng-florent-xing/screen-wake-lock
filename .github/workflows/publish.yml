@@ -56,15 +56,14 @@ jobs:
         run: pnpm install # change this to npm, pnpm or bun depending on which one you use.
 
       - uses: tauri-apps/tauri-action@v0
-
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: ${{ github.ref_name }} # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: 'App v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: true
-          prerelease: false
-          args: ${{ matrix.args }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        # tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+        # releaseName: 'App v__VERSION__'
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        releaseBody: 'See the assets to download this version and install.'
+        releaseDraft: true
+        prerelease: false
+        args: ${{ matrix.args }}
